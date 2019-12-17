@@ -50,13 +50,7 @@ jobs:
           # ln -s /mnt/openwrt/feeds ./feeds
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
           df -h
-          
-      - name: 同步最新的源码
-        run: |
-          git remote add openwrt https://github.com/coolsnowwolf/lede.git
-          git pull openwrt master
-          git remote -v
-          
+                   
       - name: Update packages
         run: |
           cd package
@@ -66,7 +60,13 @@ jobs:
           git clone https://github.com/KFERMercer/luci-app-serverchan
           git clone https://github.com/rosywrt/luci-theme-rosy
           git clone https://github.com/Ameykyl/luci-app-koolproxyR
-          
+ 
+      - name: 同步最新的源码
+        run: |
+          git remote add openwrt https://github.com/coolsnowwolf/lede.git
+          git pull openwrt master
+          git remote -v
+ 
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
