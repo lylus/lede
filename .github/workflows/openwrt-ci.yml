@@ -60,7 +60,8 @@ jobs:
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
-          git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
+          git clone https://github.com/Mrbai98/luci-theme-argon.git
+          # git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
           # git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           
       - name: Update feeds and passwall
@@ -83,6 +84,7 @@ jobs:
           rm -rf package/lean/luci-app-pptp-server
           rm -rf package/lean/luci-app-v2ray-server
           rm -rf package/lean/luci-app-verysync
+          rm -rf package/lean/luci-theme-argon
           ./scripts/feeds install -a
 
           # ./scripts/feeds update -a
@@ -186,8 +188,8 @@ jobs:
           # LuCI主题:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-theme-argon=y
-          CONFIG_PACKAGE_luci-theme-netgear=y
-          CONFIG_PACKAGE_luci-theme-atmaterial=y
+          # CONFIG_PACKAGE_luci-theme-netgear=y
+          # CONFIG_PACKAGE_luci-theme-atmaterial=y
           EOF
           # 常用软件包:
           cat >> .config <<EOF
