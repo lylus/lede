@@ -51,6 +51,10 @@ jobs:
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
           df -h
           
+          
+          
+          
+          
       - name: 涡轮增雕进程
         run: |
           cd package
@@ -58,10 +62,30 @@ jobs:
           cd openwrt-packages
           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           
-      - name: Update feeds
+      - name: Update feeds passwall
         run: |
+          cat >> feeds.conf.default <<EOF
+          src-git lienol https://github.com/Lienol/openwrt-package
+          EOF
+          ./scripts/feeds clean
           ./scripts/feeds update -a
+          rm -rf feeds/lienol/package/v2ray
+          rm -rf feeds/lienol/package/openssl1.1
+          rm -rf feeds/lienol/package/trojan
+          rm -rf feeds/lienol/package/ipt2socks
+          rm -rf feeds/lienol/package/shadowsocksr-libev
+          rm -rf feeds/lienol/package/pdnsd-alt
+          rm -rf package/lean/kcptun
+          rm -rf package/lean/verysync
+          rm -rf package/lean/luci-app-kodexplorer
+          rm -rf package/lean/luci-app-pppoe-relay
+          rm -rf package/lean/luci-app-pptp-server
+          rm -rf package/lean/luci-app-v2ray-server
+          rm -rf package/lean/luci-app-verysync
           ./scripts/feeds install -a
+
+          # ./scripts/feeds update -a
+          # ./scripts/feeds install -a
       - name: Generate configuration file
         run: |
           rm -f ./.config*
@@ -135,10 +159,10 @@ jobs:
           # CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
-          # CONFIG_PACKAGE_luci-app-docker=y
+          CONFIG_PACKAGE_luci-app-docker=y
           CONFIG_PACKAGE_luci-app-frpc=y
           # CONFIG_PACKAGE_luci-app-kodexplorer=y
-          CONFIG_PACKAGE_luci-app-minidlna=y
+          # CONFIG_PACKAGE_luci-app-minidlna=y
           # CONFIG_PACKAGE_luci-app-openvpn=y
           # CONFIG_PACKAGE_luci-app-openvpn-server=y
           # CONFIG_PACKAGE_luci-app-qbittorrent=y
@@ -148,11 +172,12 @@ jobs:
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
           CONFIG_PACKAGE_luci-app-ttyd=y
-          CONFIG_PACKAGE_luci-app-v2ray-server=y
+          # CONFIG_PACKAGE_luci-app-v2ray-server=y
           # CONFIG_PACKAGE_luci-app-verysync=y
           CONFIG_PACKAGE_luci-app-webadmin=y
           # CONFIG_PACKAGE_luci-app-wireguard=y
           # CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-passwall=y
           EOF
           # LuCI主题:
           cat >> .config <<EOF
