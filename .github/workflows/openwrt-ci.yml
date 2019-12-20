@@ -26,12 +26,12 @@ jobs:
 
     steps:
 
-      - name: Checkout
+      - name: 检查
         uses: actions/checkout@master
         with:
           ref: master
 
-      - name: Space cleanup
+      - name: 清理
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
@@ -55,16 +55,16 @@ jobs:
           
           
           
-      - name: 涡轮增雕进程
+      - name: 下载主题
         run: |
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/Mrbai98/luci-theme-argon.git
-          # git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
+          git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
           # git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           
-      - name: Update feeds and passwall
+      - name: 更新组件及更新科学上网包
         run: |
           cat >> feeds.conf.default <<EOF
           src-git lienol https://github.com/Lienol/openwrt-package
@@ -89,7 +89,7 @@ jobs:
 
           # ./scripts/feeds update -a
           # ./scripts/feeds install -a
-      - name: Generate configuration file
+      - name: 生成配置文件
         run: |
           rm -f ./.config*
           touch ./.config
@@ -188,8 +188,8 @@ jobs:
           # LuCI主题:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-theme-argon=y
-          # CONFIG_PACKAGE_luci-theme-netgear=y
-          # CONFIG_PACKAGE_luci-theme-atmaterial=y
+          CONFIG_PACKAGE_luci-theme-netgear=y
+          CONFIG_PACKAGE_luci-theme-atmaterial=y
           EOF
           # 常用软件包:
           cat >> .config <<EOF
@@ -211,12 +211,12 @@ jobs:
           # 
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
-      - name: Make download
+      - name: 编译下载
         run: |
           make download -j8
           find ./dl/ -size -1024c -exec rm -f {} \;
           df -h
-      - name: Compile firmware
+      - name: 编译固件
         run: |
           make -j$(nproc) || make -j1 V=s
           echo "======================="
@@ -227,10 +227,10 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
-      - name: Prepare artifact
+      - name: 准备工件
         run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
-      - name: Upload artifact
+      - name: 上传工件
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt firmware
