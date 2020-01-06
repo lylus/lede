@@ -60,8 +60,8 @@ jobs:
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
-          git clone https://github.com/Mrbai98/luci-theme-argon.git
-          git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
+          # git clone https://github.com/Mrbai98/luci-theme-argon.git
+          # git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
           git clone https://github.com/sypopo/luci-theme-argon-mc.git
           # git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
 
@@ -193,6 +193,8 @@ jobs:
           CONFIG_PACKAGE_tree=y
           CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
+          CONFIG_PACKAGE_samba4=n
+          CONFIG_PACKAGE_samba=n
           EOF
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
           cat >> .config <<EOF
