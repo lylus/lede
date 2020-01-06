@@ -161,15 +161,23 @@ jobs:
           # EOF
           # 常用LuCI插件选择:
           cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-app-smartdns=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-passwall=y
           CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+          CONFIG_PACKAGE_luci-app-adbyby-plus=n
+          CONFIG_PACKAGE_luci-app-xlnetacc=n
+          CONFIG_PACKAGE_luci-app-samba4=n
+          CONFIG_PACKAGE_luci-app-vsftpd=n
+          CONFIG_PACKAGE_luci-app-qbittorrent=n
+          CONFIG_PACKAGE_luci-app-ipsec-vpnd=n
+          CONFIG_PACKAGE_luci-app-zerotier=n
           EOF
           # LuCI主题:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon=y
-          CONFIG_PACKAGE_luci-theme-netgear=y
+          CONFIG_PACKAGE_luci-theme-argon=n
+          CONFIG_PACKAGE_luci-theme-netgear=n
           CONFIG_PACKAGE_luci-theme-atmaterial=y
           CONFIG_PACKAGE_luci-theme-argon-mc=y
           EOF
@@ -184,10 +192,10 @@ jobs:
           CONFIG_PACKAGE_wget=y
           EOF
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
-          # cat >> .config <<EOF
-          # # CONFIG_TARGET_IMAGES_PAD is not set
-          # # CONFIG_VMDK_IMAGES is not set
-          # EOF
+          cat >> .config <<EOF
+          # CONFIG_TARGET_IMAGES_PAD is not set
+          # CONFIG_VMDK_IMAGES is not set
+          EOF
           # 
           # ========================固件定制部分结束========================
           # 
