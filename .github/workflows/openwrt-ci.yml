@@ -164,9 +164,9 @@ jobs:
           CONFIG_PACKAGE_luci-app-adguardhome=y
           CONFIG_PACKAGE_luci-app-smartdns=y
           CONFIG_PACKAGE_luci-app-ttyd=y
-          CONFIG_PACKAGE_luci-app-webadmin=y
+          CONFIG_PACKAGE_luci-app-webadmin=n
           CONFIG_PACKAGE_luci-app-passwall=y
-          CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+          # CONFIG_PACKAGE_luci-app-haproxy-tcp=y
           CONFIG_PACKAGE_luci-app-adbyby-plus=n
           CONFIG_PACKAGE_luci-app-xlnetacc=n
           CONFIG_PACKAGE_luci-app-samba4=n
@@ -180,14 +180,14 @@ jobs:
           EOF
           # LuCI主题:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon=n
-          CONFIG_PACKAGE_luci-theme-netgear=n
-          CONFIG_PACKAGE_luci-theme-atmaterial=n
-          CONFIG_PACKAGE_luci-theme-bootstrap=n
+          # CONFIG_PACKAGE_luci-theme-argon=n
+          # CONFIG_PACKAGE_luci-theme-netgear=n
+          CONFIG_PACKAGE_luci-theme-atmaterial=y
           CONFIG_PACKAGE_luci-theme-argon-mc=y
           EOF
           # 常用软件包:
           cat >> .config <<EOF
+          CONFIG_PACKAGE_haproxy=y
           CONFIG_PACKAGE_curl=y
           CONFIG_PACKAGE_htop=y
           CONFIG_PACKAGE_nano=y
