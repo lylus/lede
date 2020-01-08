@@ -176,12 +176,14 @@ jobs:
           CONFIG_PACKAGE_luci-app-zerotier=n
           CONFIG_PACKAGE_luci-app-unblockmusic=n
           CONFIG_PACKAGE_luci-app-v2ray-server=n
+          CONFIG_PACKAGE_luci-app-pptp-server=n
           EOF
           # LuCI主题:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-theme-argon=n
           CONFIG_PACKAGE_luci-theme-netgear=n
-          CONFIG_PACKAGE_luci-theme-atmaterial=y
+          CONFIG_PACKAGE_luci-theme-atmaterial=n
+          CONFIG_PACKAGE_luci-theme-bootstrap=n
           CONFIG_PACKAGE_luci-theme-argon-mc=y
           EOF
           # 常用软件包:
