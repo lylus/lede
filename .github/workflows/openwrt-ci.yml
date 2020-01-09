@@ -87,6 +87,8 @@ jobs:
           rm -rf package/lean/luci-app-v2ray-server
           rm -rf package/lean/luci-app-verysync
           rm -rf package/lean/luci-theme-argon
+          rm -rf luci/themes/luci-theme-bootstrap
+          rm -rf themes/luci-theme-bootstrap
           ./scripts/feeds install -a
 
           # ./scripts/feeds update -a
@@ -182,8 +184,8 @@ jobs:
           cat >> .config <<EOF
           # CONFIG_PACKAGE_luci-theme-argon=n
           # CONFIG_PACKAGE_luci-theme-netgear=n
-          CONFIG_PACKAGE_luci-theme-atmaterial=y
-          CONFIG_PACKAGE_luci-theme-argon-mc=y
+          # CONFIG_PACKAGE_luci-theme-atmaterial=n
+          CONFIG_PACKAGE_luci-theme-argon-mc2=y
           EOF
           # 常用软件包:
           cat >> .config <<EOF
