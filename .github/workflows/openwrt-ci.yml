@@ -79,6 +79,8 @@ jobs:
           rm -rf feeds/lienol/package/ipt2socks
           rm -rf feeds/lienol/package/shadowsocksr-libev
           rm -rf feeds/lienol/package/pdnsd-alt
+          rm -rf feeds/lienol/package/luci-theme-bootstrap-mod
+          rm -rf feeds/lienol/luci-theme-bootstrap-mod
           rm -rf package/lean/kcptun
           rm -rf package/lean/verysync
           rm -rf package/lean/luci-app-kodexplorer
@@ -89,6 +91,9 @@ jobs:
           rm -rf package/lean/luci-theme-argon
           rm -rf luci/themes/luci-theme-bootstrap
           rm -rf themes/luci-theme-bootstrap
+          rm -rf feeds/luci/themes/luci-theme-bootstrap
+          rm -rf feeds/luci/themes/luci-theme-material
+          
           ./scripts/feeds install -a
 
           # ./scripts/feeds update -a
