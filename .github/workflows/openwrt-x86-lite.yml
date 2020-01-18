@@ -125,8 +125,8 @@ jobs:
           # 
           # 编译x64固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_x86=y
-          CONFIG_TARGET_x86_64=y
+          CONFIG_TARGET_x86=n
+          CONFIG_TARGET_x86_64=n
           CONFIG_TARGET_x86_64_Generic=y
           EOF
           # 固件压缩:
@@ -135,7 +135,7 @@ jobs:
           EOF
           # 编译UEFI固件:
           cat >> .config <<EOF
-          CONFIG_EFI_IMAGES=y
+          CONFIG_EFI_IMAGES=n
           EOF
           # IPv6支持:
           cat >> .config <<EOF
@@ -162,7 +162,7 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-docker=y
-          CONFIG_PACKAGE_luci-app-frpc=y
+          CONFIG_PACKAGE_luci-app-frpc=n
           CONFIG_PACKAGE_luci-app-adguardhome=n
           CONFIG_PACKAGE_luci-app-smartdns=n
           CONFIG_PACKAGE_luci-app-ttyd=y
@@ -180,6 +180,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-v2ray-server=n
           CONFIG_PACKAGE_luci-app-ssr-plus=n
           CONFIG_PACKAGE_luci-app-upnp=n
+          CONFIG_PACKAGE_luci-app-pptp-server=n
           EOF
           # LuCI主题:
           cat >> .config <<EOF
