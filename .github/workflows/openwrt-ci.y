@@ -61,10 +61,10 @@ jobs:
           mkdir openwrt-packages
           cd openwrt-packages
           # git clone https://github.com/Mrbai98/luci-theme-argon.git
-          git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
+          # git clone https://github.com/Mrbai98/luci-theme-atmaterial.git
           git clone https://github.com/sypopo/luci-theme-argon-mc.git
           # git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
-          git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
+          # git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
           
       - name: 更新组件及更新科学上网包
         run: |
