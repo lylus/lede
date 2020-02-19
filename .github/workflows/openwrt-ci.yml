@@ -57,7 +57,7 @@ jobs:
           
       - name: 下载主题和软件包
         run: |
-          ＃ cd package
+          # cd package
           # mkdir openwrt-packages
           # cd openwrt-packages
           # git clone https://github.com/Mrbai98/luci-theme-argon.git
